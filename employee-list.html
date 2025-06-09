@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>รายชื่อพนักงาน - ระบบลงเวลา</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+</head>
+<body>
+    <div class="layout">
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>ระบบลงเวลา</h1>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="has-submenu">
+                        <a href="#" class="submenu-toggle">
+                            <i class="fas fa-users"></i>
+                            <span>จัดการพนักงาน</span>
+                            <i class="fas fa-chevron-down submenu-icon"></i>
+                        </a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="index.html">
+                                    <i class="fas fa-user-plus"></i>
+                                    <span>เพิ่มพนักงานใหม่</span>
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="employee-list.html">
+                                    <i class="fas fa-list"></i>
+                                    <span>รายชื่อพนักงาน</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="scanner.html">
+                            <i class="fas fa-qrcode"></i>
+                            <span>สแกนลงเวลา</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="dashboard.html">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>แดชบอร์ด</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <div class="container">
+                <div class="current-time">
+                    <h3>เวลาปัจจุบัน</h3>
+                    <div id="currentTime"></div>
+                </div>
+
+                <div class="qr-section">
+                    <h2>QR Code พนักงาน</h2>
+                    <div id="qrcode"></div>
+                    <div class="qr-buttons">
+                        <button id="printQR" style="display: none;">
+                            <i class="fas fa-print"></i>
+                            พิมพ์ QR Code
+                        </button>
+                        <button id="saveQR" style="display: none;" onclick="saveQRCode()">
+                            <i class="fas fa-download"></i>
+                            บันทึก QR Code
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="employee-list">
+                    <h2>รายชื่อพนักงาน</h2>
+                    <div class="loading-indicator" style="display: none;">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        กำลังโหลดข้อมูล...
+                    </div>
+                    <table id="employeeTable">
+                        <thead>
+                            <tr>
+                                <th>รหัสพนักงาน</th>
+                                <th>ชื่อ-นามสกุล</th>
+                                <th>ตำแหน่ง</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="sheets.js"></script>
+    <script src="employee-list.js"></script>
+</body>
+</html> 

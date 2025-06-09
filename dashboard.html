@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - ระบบลงเวลาพนักงาน</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="layout">
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>ระบบลงเวลา</h1>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="has-submenu">
+                        <a href="#" class="submenu-toggle">
+                            <i class="fas fa-users"></i>
+                            <span>จัดการพนักงาน</span>
+                            <i class="fas fa-chevron-down submenu-icon"></i>
+                        </a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="index.html">
+                                    <i class="fas fa-user-plus"></i>
+                                    <span>เพิ่มพนักงานใหม่</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="employee-list.html">
+                                    <i class="fas fa-list"></i>
+                                    <span>รายชื่อพนักงาน</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="scanner.html">
+                            <i class="fas fa-qrcode"></i>
+                            <span>สแกนลงเวลา</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="dashboard.html">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>แดชบอร์ด</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <div class="container">
+                <div class="current-time">
+                    <h3>เวลาปัจจุบัน</h3>
+                    <div id="currentTime"></div>
+                </div>
+
+                <h2>Dashboard ระบบลงเวลาพนักงาน</h2>
+                
+                <div class="dashboard-container">
+                    <div class="filter-section">
+                        <div class="form-group">
+                            <label for="dateFilter">เลือกวันที่:</label>
+                            <input type="date" id="dateFilter">
+                        </div>
+                        <div class="form-group">
+                            <label for="employeeFilter">เลือกพนักงาน:</label>
+                            <select id="employeeFilter">
+                                <option value="">ทั้งหมด</option>
+                            </select>
+                        </div>
+                        <div class="button-group">
+                            <button class="action-button" onclick="exportToCSV()">
+                                <i class="fas fa-file-export"></i>
+                                Export to CSV
+                            </button>
+                            <button id="clearDashboardBtn" class="action-button delete-button">
+                                <i class="fas fa-trash-alt"></i>
+                                ล้างข้อมูล
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="time-records">
+                        <div class="loading-indicator" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            กำลังโหลดข้อมูล...
+                        </div>
+                        <table id="timeRecordsTable">
+                            <thead>
+                                <tr>
+                                    <th>วันที่</th>
+                                    <th>เวลา</th>
+                                    <th>รหัสพนักงาน</th>
+                                    <th>ชื่อพนักงาน</th>
+                                    <th>ตำแหน่ง</th>
+                                    <th>ประเภท</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="sheets.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html> 
